@@ -5,8 +5,9 @@
   "main": "index.js",
   "repository": "git@github.com:hezhuoyi/blog.git",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "deploy": "GH=1 yarn build && bash scripts/deploy.sh"
   },
   "directories": {
     "doc": "docs"
@@ -14,7 +15,12 @@
   "author": {
     "name": "Johnny He",
     "email": "he99999@vip.qq.com",
-    "url" : "https://github.com/hezhuoyi"
+    "url": "https://github.com/hezhuoyi"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@vuepress/plugin-pwa": "^2.0.0-beta.22",
+    "@vuepress/plugin-search": "^2.0.0-beta.22",
+    "vuepress": "^2.0.0-beta.22"
+  }
 }
