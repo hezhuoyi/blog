@@ -65,6 +65,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/Framework/Vue/Vue相关.md',
             '/Framework/React/React相关.md',
             '/Framework/TypeScript/深入理解TS.md',
+            '/Framework/TypeScript/TS类型系统.md',
             '/Framework/数据流管理/状态管理工具.md',
             '/Framework/小程序/运行机制.md',
             '/Framework/RN/运行机制.md',
