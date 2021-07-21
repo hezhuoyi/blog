@@ -62,14 +62,49 @@ export default defineUserConfig<DefaultThemeOptions>({
           text: '框架和类库',
           children: [
             '/Framework/README.md',
-            '/Framework/Vue/Vue相关.md',
-            '/Framework/React/React相关.md',
-            '/Framework/TypeScript/深入理解TS.md',
-            '/Framework/TypeScript/TS类型系统.md',
-            '/Framework/数据流管理/状态管理工具.md',
-            '/Framework/小程序/运行机制.md',
-            '/Framework/RN/运行机制.md',
-            '/Framework/Flutter/运行机制.md',
+            {
+              text: 'Vue',
+              children: [
+                '/Framework/Vue/Vue相关.md',
+              ]
+            },
+            {
+              text: 'React',
+              children: [
+                '/Framework/React/React相关.md',
+              ]
+            },
+            {
+              text: 'TypeScript',
+              children: [
+                '/Framework/TypeScript/深入理解TS.md',
+                '/Framework/TypeScript/TS类型系统.md',
+              ]
+            },
+            {
+              text: '数据流管理',
+              children: [
+                '/Framework/数据流管理/状态管理工具.md',
+              ]
+            },
+            {
+              text: '小程序',
+              children: [
+                '/Framework/小程序/运行机制.md',
+              ]
+            },
+            {
+              text: 'RN',
+              children: [
+                '/Framework/RN/运行机制.md',
+              ]
+            },
+            {
+              text: 'Flutter',
+              children: [
+                '/Framework/Flutter/运行机制.md',
+              ]
+            },
           ],
         },
       ],
