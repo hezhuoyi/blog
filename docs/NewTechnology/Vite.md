@@ -1,6 +1,25 @@
 # Vite
 
-## vite构建流程
+## 简介
+Vite 以 原生 ESM 方式提供源码。这实际上是让浏览器接管了打包程序的部分工作：Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。
+
+![bundle](../.vuepress/public/images/vite-normal.png)
+
+![esm](../.vuepress/public/images/vite-esm.png)
+
+可以看到，Webpack 启动后会做一堆事情，经历一条很长的编译打包链条，从入口开始需要逐步经历语法解析、依赖收集、代码转译、打包合并、代码优化，最终将高版本的、离散的源码编译打包成低版本、高兼容性的产物代码，这可满满都是 CPU、IO 操作啊，在 Node 运行时下性能必然是有问题。
+
+而 Vite 运行 Dev 命令后只做了两件事情，一是启动了一个用于承载资源服务的 service；二是使用 esbuild 预构建 npm 依赖包。之后就一直躺着，直到浏览器以 http 方式发来 ESM 规范的模块请求时，Vite 才开始“「按需编译」”被请求的模块。
+
+## 特性
+1. 预编译：npm 包这类基本不会变化的模块，使用 Esbuild 在 「预构建」 阶段先打包整理好，减少 http 请求数
+2. 按需编译：用户代码这一类频繁变动的模块，直到被使用时才会执行编译操作
+3. 客户端强缓存：请求过的模块会被以 http 头 max-age=31536000,immutable 设置为强缓存，如果模块发生变化则用附加的版本 query 使其失效
+4. 产物优化：相比于 Webpack ，Vite 直接锚定高版本浏览器，不需要在 build 产物中插入过多运行时与模板代码
+5. 内置更好的分包实现：不需要用户干预，默认启用一系列智能分包规则，尽可能减少模块的重复打包
+6. 更好的静态资源处理：Vite 尽量避免直接处理静态资源，而是选择遵循 ESM 方式提供服务，例如引入图片 import img from 'xxx.png' 语句，执行后 img 变量只是一个路径字符串。
+
+## 构建流程
 ### 1. 创建server
 
 通过 node 原生的 http 模块创建的 server。同时在 createServer 方法内部，使用了 connect 框架作为中间件。
@@ -11,7 +30,7 @@
 
 减少模块间依赖引用导致过多的请求次数（Vite 将有许多内部模块的 ESM 依赖关系转换为单个模块，以提高后续页面加载性能。）
 
-vite 主要是通过一个内置的 vite:dep-scan esbuild 插件分析依赖项并将其写入一个_metadata.json 文件中，并通过 esbuild插件(esbuildScanPlugin 对 import 语句的扫描，并返回了需要构建的依赖 deps) 将依赖的模块（如将 vue.runtime.esm-bundler.js）打包至.vite 文件中（产生一个 vue.js 和 vue.js.map 文件）
+vite 主要是通过一个内置的 vite:dep-scan **esbuild** 插件分析依赖项并将其写入一个_metadata.json 文件中，并通过 esbuild插件(esbuildScanPlugin 对 import 语句的扫描，并返回了需要构建的依赖 deps) 将依赖的模块（如将 vue.runtime.esm-bundler.js）打包至.vite 文件中（产生一个 vue.js 和 vue.js.map 文件）
 
 ### 3. transformMiddleware
 
