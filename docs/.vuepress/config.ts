@@ -99,6 +99,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/Framework/RN/运行机制.md',
                 '/Framework/RN/启动流程.md',
                 '/Framework/RN/性能优化.md',
+                '/Framework/RN/新架构.md',
               ]
             },
             {
