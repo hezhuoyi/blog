@@ -105,7 +105,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: 'Flutter',
               children: [
-                '/Framework/Flutter/运行机制.md',
+                '/Framework/Flutter/核心原理.md',
+                '/Framework/Flutter/UI系统.md',
               ]
             },
           ],
