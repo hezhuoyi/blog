@@ -7,10 +7,11 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '认真分享和记录各类好文，逐步完善大前端知识体系。',
   themeConfig: {
     contributors: false,
+    lastUpdated: false,
     docsDir: 'docs',
     sidebarDepth: 1,
     navbar: [
-      { text: 'JavaScript', link: '/JavaScript/' },
+      { text: 'JavaScript进阶', link: '/JavaScript/' },
       { text: '计算机网络',link: '/Network/' },
       { text: '浏览器', link: '/Browser/' },
       { text: '框架', link: '/Framework/' },
