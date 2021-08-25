@@ -11,7 +11,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     docsDir: 'docs',
     sidebarDepth: 1,
     navbar: [
-      { text: 'JavaScript进阶', link: '/JavaScript/' },
+      { text: '深入JavaScript', link: '/JavaScript/' },
       { text: '计算机网络',link: '/Network/' },
       { text: '浏览器', link: '/Browser/' },
       { text: '框架', link: '/Framework/' },
@@ -24,11 +24,11 @@ export default defineUserConfig<DefaultThemeOptions>({
     sidebar: {
       '/JavaScript/': [
         {
-          text: 'JavaScript进阶',
+          text: '深入JavaScript',
           children: [
             '/JavaScript/README.md',
             '/JavaScript/JS执行机制.md',
-            '/JavaScript/JS进阶.md',
+            '/JavaScript/JS进阶语法.md',
             '/JavaScript/作用域和闭包.md',
             '/JavaScript/模块化.md',
             '/JavaScript/手写系列.md',
@@ -43,7 +43,9 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/Network/编译原理.md',
             '/Network/计算机原理.md',
             '/Network/设计模式.md',
-            '/Network/网络协议.md',
+            '/Network/HTTP.md',
+            '/Network/HTTPS.md',
+            '/Network/RPC.md',
             '/Network/网络安全.md',
           ],
         },

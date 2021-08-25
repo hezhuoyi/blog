@@ -12,7 +12,7 @@ Expires => Cache-Control  从过期时间变成过期时长  max-age就是确定
 
 **3. DNS解析**（淘宝京东这种网站一般使用**DNS预解析**跨过这一步，浏览器会在加载网页时对网页中的域名进行解析缓存，这样在你单击当前网页中的连接时就无需进行DNS的解析）**（准备 IP 地址和端口）**
 
-![DNS解析](../.vuepress/public/images/DNS解析.png)
+![DNS解析](../.vuepress/public/images/js-DNS解析.png)
 
 这个过程需要依赖一个服务系统，这个系统将域名和 IP 一一映射，我们将这个系统就叫做**DNS**（域名系统）。得到具体 IP 的过程就是`DNS`解析。浏览器提供了**DNS数据缓存功能**。即如果一个域名已经解析过，那会把解析的结果缓存下来，下次处理直接走缓存，不需要经过 `DNS解析`。
 
@@ -48,7 +48,7 @@ Chrome 有个机制，**同一个域名同时最多只能请求 6 个 TCP 连接
 
 否则断开`TCP`连接, 请求-响应流程结束。
 
-![网络响应](../.vuepress/public/images/网络响应.png)
+![网络响应](../.vuepress/public/images/js-网络响应.png)
 
 默认情况下，Chrome 会为每个页面分配一个渲染进程。
 
@@ -93,7 +93,7 @@ Chrome 有个机制，**同一个域名同时最多只能请求 6 个 TCP 连接
 
 **格式化样式表（document.styleSheets） => 标准化样式属性 比如：blue->rgb(0,0,255) => 计算每个节点的具体样式 => 生成布局树**
 
-![样式计算](../.vuepress/public/images/样式计算.png)
+![样式计算](../.vuepress/public/images/js-样式计算.png)
 
 ## 从输入URL到页面呈现发生了什么——渲染过程篇
 
@@ -136,5 +136,5 @@ Chrome 有个机制，**同一个域名同时最多只能请求 6 个 TCP 连接
 
 浏览器进程中的`viz组件`接收到这个命令，根据这个命令，把**页面内容绘制到内存**，最后再将内存显示在**屏幕**上。
 
-![显示器显示内容](../.vuepress/public/images/显示器显示内容.png)
+![显示器显示内容](../.vuepress/public/images/js-显示器显示内容.png)
 

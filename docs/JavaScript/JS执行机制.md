@@ -6,7 +6,7 @@
 
 ## JS事件循环
 
-![JS执行机制](../.vuepress/public/images/JS执行机制.jpeg)
+![JS执行机制](../.vuepress/public/images/js-执行机制.jpeg)
 
 导图要表达的内容用文字来表述的话：
 
@@ -22,4 +22,4 @@ macro-task(宏任务)：包括整体代码script，setTimeout，setInterval，re
 
 micro-task(微任务)：Promise.then，MutationObserver，process.nextTick(Node.js)
 
-![JSTask](../.vuepress/public/images/JSTask.jpeg)
+![JSTask](../.vuepress/public/images/js-Task.jpeg)
