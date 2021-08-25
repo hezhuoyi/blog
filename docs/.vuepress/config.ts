@@ -28,6 +28,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: [
             '/JavaScript/README.md',
             '/JavaScript/JS执行机制.md',
+            '/JavaScript/JS进阶.md',
             '/JavaScript/作用域和闭包.md',
             '/JavaScript/模块化.md',
             '/JavaScript/手写系列.md',
@@ -55,6 +56,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/Browser/浏览器工作原理.md',
             '/Browser/浏览器性能优化.md',
             '/Browser/浏览器缓存.md',
+            '/Browser/从输入URL到页面呈现.md',
           ],
         },
       ],
