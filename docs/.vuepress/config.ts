@@ -41,7 +41,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: [
             '/Network/README.md',
             '/Network/编译原理.md',
-            '/Network/计算机原理.md',
             '/Network/设计模式.md',
             '/Network/HTTP.md',
             '/Network/HTTPS.md',
@@ -87,12 +86,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ]
             },
             {
-              text: '数据流管理',
-              children: [
-                '/Framework/数据流管理/状态管理工具.md',
-              ]
-            },
-            {
               text: '小程序',
               children: [
                 '/Framework/小程序/运行机制.md',
@@ -122,6 +115,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           text: '前端工程化',
           children: [
             '/Engineering/README.md',
+            '/Engineering/技术选型.md',
+            '/Engineering/开发规范化.md',
+            '/Engineering/前端监控.md',
+            '/Engineering/Serverless.md',
             '/Engineering/主流打包工具对比.md',
             '/Engineering/Webpack相关.md',
           ],
