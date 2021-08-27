@@ -13,10 +13,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     navbar: [
       { text: '深入JavaScript', link: '/JavaScript/' },
       { text: '计算机网络',link: '/Network/' },
-      { text: '浏览器', link: '/Browser/' },
-      { text: '框架', link: '/Framework/' },
-      { text: '工程化', link: '/Engineering/' },
-      { text: '新技术', link: '/NewTechnology/' },
+      { text: '浏览器相关', link: '/Browser/' },
+      { text: '框架和类库', link: '/Framework/' },
+      { text: '前端工程化', link: '/Engineering/' },
+      { text: '新技术/方向', link: '/NewTechnology/' },
       { text: 'LeetCode', link: 'https://hezhuoyi.github.io/leetcode' },
       { text: 'GitHub', link: 'https://github.com/hezhuoyi' },
       { text: '掘金', link: 'https://juejin.cn/user/3597257778155703' },
@@ -28,9 +28,11 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: [
             '/JavaScript/README.md',
             '/JavaScript/JS执行机制.md',
+            '/JavaScript/JS异步.md',
             '/JavaScript/JS进阶语法.md',
             '/JavaScript/作用域和闭包.md',
             '/JavaScript/模块化.md',
+            '/JavaScript/内存泄露.md',
             '/JavaScript/手写系列.md',
           ],
         },
@@ -89,6 +91,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: '小程序',
               children: [
                 '/Framework/小程序/运行机制.md',
+                '/Framework/小程序/性能优化.md',
               ]
             },
             {
