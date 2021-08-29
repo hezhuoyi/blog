@@ -71,13 +71,18 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: 'Vue',
               children: [
-                '/Framework/Vue/Vue相关.md',
+                '/Framework/Vue/Vue实现原理.md',
+                '/Framework/Vue/Vue源码相关.md',
+                '/Framework/Vue/Vuex和Vue-Router.md',
               ]
             },
             {
               text: 'React',
               children: [
-                '/Framework/React/React相关.md',
+                '/Framework/React/Fiber.md',
+                '/Framework/React/Hooks.md',
+                '/Framework/React/Redux.md',
+                '/Framework/React/React其他.md',
               ]
             },
             {
