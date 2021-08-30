@@ -33,6 +33,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/JavaScript/作用域和闭包.md',
             '/JavaScript/模块化.md',
             '/JavaScript/内存泄露.md',
+            '/JavaScript/设计模式.md',
             '/JavaScript/手写系列.md',
           ],
         },
@@ -43,7 +44,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: [
             '/Network/README.md',
             '/Network/编译原理.md',
-            '/Network/设计模式.md',
             '/Network/HTTP.md',
             '/Network/HTTPS.md',
             '/Network/RPC.md',
@@ -60,6 +60,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/Browser/浏览器性能优化.md',
             '/Browser/浏览器缓存.md',
             '/Browser/从输入URL到页面呈现.md',
+            '/Browser/v8引擎.md',
           ],
         },
       ],
@@ -74,6 +75,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/Framework/Vue/Vue实现原理.md',
                 '/Framework/Vue/Vue源码相关.md',
                 '/Framework/Vue/Vuex和Vue-Router.md',
+                '/Framework/Vue/Vue3的优化.md',
               ]
             },
             {
@@ -128,6 +130,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/Engineering/前端监控.md',
             '/Engineering/Serverless.md',
             '/Engineering/主流打包工具对比.md',
+            '/Engineering/k8s.md',
             '/Engineering/Webpack相关.md',
           ],
         },

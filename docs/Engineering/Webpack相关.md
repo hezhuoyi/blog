@@ -13,9 +13,15 @@
 
 **postcss-loader** 添加浏览器前缀
 
-
-
 `Plugin` 就是插件，基于事件流框架 `Tapable`，**插件可以扩展 Webpack 的功能**，**在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。**
+
+### 在webpack的plugin运行的过程中存在两个非常重要的对象：`compiler`和`compilation`。
+
+- compiler：在初始化compiler对象之后，通过调用插件实例的apply方法，作为其参数传入。这个对象包含了webpack环境的所有的配置信息，比如options，loaders，plugins等。这个对象会在webpack被启动的时候进行实例化，全局且唯一的。
+
+- compilation：这个对象会作为plugin内置事件回调函数的参数。包含了当前的模块资源，编译生成的资源，变化的文件等信息。如果我们运行在开发模式，每当检测到一个文件的变化，就会生成一个新的compilation对象。
+
+所以，compiler代表了webpack从启动到关闭的整个生命周期，而compilation仅仅代表了一次新的编译。
 
 ## 构建流程
 1. **初始化参数**：从配置文件和 Shell 语句中读取与合并参数,得出最终的参数。

@@ -1,6 +1,6 @@
 # Vue源码相关
 
-## Vue源码之 computed和watch
+## computed和watch
 
 ### computed
 **computed本质是一个惰性求值的观察者，具有缓存性，只有当依赖变化后，第一次访问 computed 属性，才会计算新的值。**
