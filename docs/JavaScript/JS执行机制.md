@@ -22,6 +22,8 @@ macro-task(宏任务)：包括整体代码script，setTimeout，setInterval，re
 
 micro-task(微任务)：Promise.then，MutationObserver，process.nextTick(Node.js)
 
+不同类型的任务会进入对应的Event Queue，比如setTimeout和setInterval会进入相同的Event Queue。
+
 ![JSTask](../.vuepress/public/images/js-Task.jpeg)
 
 ## NodeJs中的事件循环

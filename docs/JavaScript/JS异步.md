@@ -26,7 +26,7 @@ Iterator本质上是一个指针对象，实现过程如下：
 2. await命令后面可以是Promise对象或原始类型的值，yield命令后面只能是Thunk函数或Promise对象。
 3. 返回值是Promise。返回非Promise时，async函数会把它包装成Promise返回。(Promise.resolve(value))
 
-原生具有[Symbol.iterator]属性数据类型为可迭代数据类型。如字符串、数组、类数组（如arguments、NodeList）、Set和Map。
+**原生具有[Symbol.iterator]属性数据类型为可迭代数据类型。如字符串、数组、类数组（如arguments、NodeList）、Set和Map**
 ```js
 let arr = [4, 2, 1];
 let iterator = arr[Symbol.iterator]();  // 这就是迭代器
