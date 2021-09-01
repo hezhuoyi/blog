@@ -24,4 +24,19 @@ vue2中的虚拟dom通过模板创建虚拟节点（js对象），然后使用�
 ## 全局API分块（Tree Shake机制）
 Vue 3源代码将加入tree-shake。这意味着，如果您不使用其某些功能（例如component或者v-show指令），它们将不会包含在您的基础包中。
 
+### 关于 Tree Shaking
+Tree shaking 是一种通过清除多余代码方式来优化项目打包体积的技术，专业术语叫 Dead code elimination
+
+原理：
+1. ES6 Module引入进行静态分析，故而编译的时候正确判断到底加载了那些模块
+2. 静态分析程序流，判断那些模块和变量未被使用或者引用，进而删除对应代码
+
 ## 更好的 TypeScript 支持
+Vue 3是用TypeScript编写的库，可以享受到自动的类型定义提示
+
+## Composition API
+它以 setup 启动函数作为逻辑组织的入口，暴露了响应式 API 为用户所用，也提供了生命周期函数以及依赖注入的接口，就是将某个逻辑关注点相关的代码全都放在一个函数里，这样当需要修改一个功能时，就不再需要在文件中跳来跳去。
+
+**Composition API响应式的实现依靠一个保存有依赖与更新对应关系的WeakMap数据结构。这里的WeakMap数据结构指的就是ES6提供的WeakMap数据结构。**
+
+依赖就是reactive/ref返回的对象。而computed/watch等都通过一个函数参数消费依赖，这些函数参数就是所谓的更新。Composition API把依赖作为key，更新函数作为value来构建WeakMap，在依赖有变更时在WeakMap中找到对应的更新函数来执行，以此实现响应式。

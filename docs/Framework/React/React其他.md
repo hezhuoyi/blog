@@ -1,6 +1,33 @@
 # React其他
 
 ## 常见问题
+### react生命周期
+挂载：
+1. constructor
+2. **static getDerivedStateFromProps**：让 props 能更新到组件内部 state 中，如果props传入的内容不需要影响到你的state，那么就需要返回一个null。（替代componentWillReceiveProps，即使你的props没有任何变化，而是父state发生了变化，导致子组件发生了re-render，这个生命周期函数依然会被调用。）
+3. render
+4. componentDidMount
+
+更新：
+1. **static getDerivedStateFromProps**
+2. shouldComponentUpdate
+3. render
+4. **getSnapshotBeforeUpdate**：在 react 更新 dom 之前调用，此时 state 已更新； 返回值作为 componentDidUpdate 的第3个参数； 一般用于获取 render 之前的 dom 数据。
+5. componentDidUpdate
+
+卸载：componentWillUnmount
+
+异常：componentDidCatch
+
+### react执行流程
+1. jsx 经过 babel 转变成 render 函数
+2. create update：创建一个update实例
+3. enqueueUpdate：将update挂载到 根fiber 的 updateQueue 属性上
+4. requestWork：判断isBatchingUpdates(立即执行/批处理)/同步/需要调度的任务
+4. scheduleWork：开始任务调度 更新 expiration time
+5. workLoop大循环：循环执行performUnitOfWork并赋值给workInProgress，直到workInProgress值为空，则中止循环
+6. commit阶段 同步更新，不可被打断
+
 ### setState 什么时候是同步,什么时候是异步?
 
 **setState 在原生事件和 setTimeout 中都是同步的. 在合成事件和钩子函数中是异步的.**
