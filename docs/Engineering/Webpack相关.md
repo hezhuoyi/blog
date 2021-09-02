@@ -1,7 +1,9 @@
 # Webpack相关
 
-## webpack大纲
-![webpack大纲](../.vuepress/public/images/webpack.png)
+## webpack工作流程
+![webpack4工作流程](../.vuepress/public/images/webpack4.png)
+
+**Webpack 本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是 Tapable，Webpack 中最核心的负责编译的 Compiler 和负责创建 bundles 的 Compilation 都是 Tapable 的子类，并且实例内部的生命周期也是通过 Tapable 库提供的钩子类实现的。**
 
 ## Loader和Plugin的区别
 
@@ -34,7 +36,7 @@
 
 **在以上过程中,Webpack 会在特定的时间点广播出特定的事件,插件在监听到感兴趣的事件后会执行特定的逻辑,并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。**
 
-## **提高效率的插件**
+## 提高效率的插件
 
 **`webpack-dashboard`：可以更友好的展示相关打包信息。**
 
@@ -50,28 +52,39 @@
 
 **`NamedModulesPlugin`**：**显示热替换模块文件名称**
 
-
 webpack 的一些优化手段，**打包时间方面、缓存、缩小构建目标**
 
 ## 打包体积
 
 **打包体积优化，减少首次访问白屏时间**：按需加载 **code-splitting 代码切割**：需要使用 `import()` 语法：`import()` 语法，需要 `@babel/plugin-syntax-dynamic-import` 的插件支持，但是因为当前 `@babel/preset-env` 预设中已经包含了 `@babel/plugin-syntax-dynamic-import`，因此我们不需要再单独安装和配置。
 
-**1缩小构建目标**：**externals配置**：防止**将某些 `import` 的包(package)**打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies) --- **CDN引入**。
+1. **externals配置**
 
-**2缩小构建目标**：页面公共资源：使用 SplitChunksPlugin 进行(公共脚本、基础包、页面公共文件)分离(Webpack4内置) ，替代了 CommonsChunkPlugin 插件
+防止 **将某些 `import` 的包(package)** 打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies) --- **CDN引入**。
 
-**3缩小构建目标**：**使用Tree Shaking**：ES6 模块化语法是静态的，可以静态分析=>需要使用**UglifyJsPlugin**插件
+2. **SplitChunksPlugin**
+
+页面公共资源：使用 SplitChunksPlugin 进行(公共脚本、基础包、页面公共文件)分离(Webpack4内置) ，替代了 CommonsChunkPlugin 插件
+
+3. **使用Tree Shaking**
+
+ES6 模块化语法是静态的，可以静态分析=>需要使用**UglifyJsPlugin**插件
 
 ## 构建速度
 
-**1优化构建速度： 使用 DllPlugin**：**DLLPlugin 和 DLLReferencePlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。**
+**使用 DllPlugin**：**DLLPlugin 和 DLLReferencePlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。**
 
-**DllPlugin配置一份webpack配置文件，用于生成动态链接库。**第一次使用 webpack.dll.config.js 文件会对第三方库打包，打包完成后就不会再打包它了，然后每次运行 webpack.config.js文件的时候，都会打包项目中本身的文件代码，当需要使用第三方依赖的时候，会**使用 DllReferencePlugin插件去读取第三方依赖库**，**看看是否有该第三方库**。所以说它的打包速度会得到一个很大的提升。）
+1. **DllPlugin配置一份webpack配置文件，用于生成动态链接库。**
 
-**2优化构建速度：使用 HappyPack或thread-loader**：Webpack 是单线程模型的，也就是说 Webpack 需要一个一个地处理任务，**不能同时处理多个任务**。**HappyPack将任务分解给多个子进程去并发执行**，子进程处理完后再将结果发送给主进程,从而发挥多核 CPU 电脑的威力。
+第一次使用 webpack.dll.config.js 文件会对第三方库打包，打包完成后就不会再打包它了，然后每次运行 webpack.config.js文件的时候，都会打包项目中本身的文件代码，当需要使用第三方依赖的时候，会**使用 DllReferencePlugin插件去读取第三方依赖库**，**看看是否有该第三方库**。所以说它的打包速度会得到一个很大的提升。）
 
-**3优化构建速度：使用 ParallelUglifyPlugin**：webpack默认提供了**UglifyJS**插件来压缩JS代码，但是它使用的是单线程压缩代码，也就是说多个js文件需要被压缩，它需要一个个文件进行压缩。所以说在正式环境打包压缩代码速度非常慢(**因为压缩JS代码需要先把代码解析成用Object抽象表示的AST语法树，再去应用各种规则分析和处理AST，导致这个过程耗时非常大**)。
+2. **使用 HappyPack或thread-loader**
+
+Webpack 是单线程模型的，也就是说 Webpack 需要一个一个地处理任务，**不能同时处理多个任务**。**HappyPack将任务分解给多个子进程去并发执行**，子进程处理完后再将结果发送给主进程,从而发挥多核 CPU 电脑的威力。
+
+3. **使用 ParallelUglifyPlugin**
+
+webpack默认提供了**UglifyJS**插件来压缩JS代码，但是它使用的是单线程压缩代码，也就是说多个js文件需要被压缩，它需要一个个文件进行压缩。所以说在正式环境打包压缩代码速度非常慢(**因为压缩JS代码需要先把代码解析成用Object抽象表示的AST语法树，再去应用各种规则分析和处理AST，导致这个过程耗时非常大**)。
 
 当webpack有**多个JS文件需要输出和压缩时候**，原来会使用UglifyJS去一个个压缩并且输出，但是ParallelUglifyPlugin插件则会**开启多个子进程**，把对多个文件压缩的工作分别给多个子进程去完成，但是每个子进程还是通过UglifyJS去压缩代码。无非就是变成了**并行处理**该压缩了，并行处理多个子任务，效率会更加的提高。
 
@@ -87,3 +100,6 @@ webpack 的一些优化手段，**打包时间方面、缓存、缩小构建目�
 
 ## 热更新
 ![webpack热更新](../.vuepress/public/images/hotfix.png)
+
+### webpack大纲
+![webpack大纲](../.vuepress/public/images/webpack.png)

@@ -40,11 +40,11 @@ javascript的代码都是运行在内存的，刷新页面，以前申请的内�
 
 Vue 从它的设计上就是一个渐进式 JavaScript 框架，它本身的核心是解决视图渲染的问题，其它的能力就通过插件的方式来解决。Vue-Router 就是官方维护的路由插件。
 
-1.通过标志位为了确保 `install` 逻辑只执行一次。
+1. 通过标志位为了确保 `install` 逻辑只执行一次。
 
-2.利用 `Vue.mixin` 去把 `beforeCreate` 和 `destroyed` 钩子函数注入到每一个组件中。在 `beforeCreate` 做一些私有属性定义和路由初始化工作。
+2. 利用 `Vue.mixin` 去把 `beforeCreate` 和 `destroyed` 钩子函数注入到每一个组件中。在 `beforeCreate` 做一些私有属性定义和路由初始化工作。
 
-3.VueRouter 的实现是一个类，初始化时通过mode新建了不同的history类，init时调用了history.transitionTo做路由过渡。
+3. VueRouter 的实现是一个类，初始化时通过mode新建了不同的history类，init时调用了history.transitionTo做路由过渡。
 
 **hash模式**
 
