@@ -1,5 +1,21 @@
 # React其他
 
+## React16架构
+1. **Scheduler（调度器）—— 调度任务的优先级，高优任务优先进入Reconciler（新）**
+2. **Reconciler（协调器）—— 负责找出变化的组件** 会为变化的虚拟DOM打上代表增/删/更新的标记
+3. **Renderer（渲染器）—— 负责将变化的组件渲染到页面上** 根据Reconciler为虚拟DOM打的标记，同步执行对应的DOM操作。
+
+React16将递归的无法中断的更新重构为异步的可中断更新，由于曾经用于递归的虚拟DOM数据结构已经无法满足需要。于是，全新的Fiber架构应运而生。
+
+## 双缓存Fiber树
+React使用“双缓存”来完成Fiber树的构建与替换——对应着DOM树的创建与更新。
+
+在React中最多会同时存在两棵Fiber树。当前屏幕上显示内容对应的Fiber树称为current Fiber树，正在内存中构建的Fiber树称为workInProgress Fiber树。
+
+即当workInProgress Fiber树构建完成交给Renderer渲染在页面上后，应用根节点的current指针指向workInProgress Fiber树，此时workInProgress Fiber树就变为current Fiber树。
+
+每次状态更新都会产生新的workInProgress Fiber树，通过current与workInProgress的替换，完成DOM更新。
+
 ## 常见问题
 ### react生命周期
 挂载：
