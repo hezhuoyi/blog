@@ -161,3 +161,6 @@ QUIC 协议(Quick UDP Internet Connection)基于 UDP，正是看中了 **UDP 的
 QUIC 解决队头阻塞问题的方法：
 1. QUIC 的传输单元是 Packet，加密单元也是 Packet，整个加密、传输、解密都基于 Packet，这样就能避免 TLS 的队头阻塞问题。
 2. QUIC 基于 UDP，UDP 的数据包在接收端**没有处理顺序**，即使中间丢失一个包，也不会阻塞整条连接，其他的资源会被正常处理。
+
+#### QUIC 基于 UDP 怎么保证可靠性？
+TCP 中通过三次握手，给每一份数据包添加序列，以及重试机制，保证可靠性。而 QUIC 在 UDP 的基础上，增加了一层实现 TCP 类似的功能。
