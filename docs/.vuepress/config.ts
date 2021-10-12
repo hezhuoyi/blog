@@ -92,6 +92,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: [
                 '/Framework/TypeScript/深入理解TS.md',
                 '/Framework/TypeScript/TS类型系统.md',
+                '/Framework/TypeScript/巧用TypeScript.md',
               ]
             },
             {
