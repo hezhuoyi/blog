@@ -110,7 +110,9 @@ HTTP 通信时，除服务端和客户端以外，还有一些用于通信数据
 ### options请求
 options是预检请求，在真正的请求发送出去之前，浏览器会先发送一个options请求向服务询问此接口是否允许我访问。
 
-浏览器在当前真实请求是**非简单请求且跨域**的情况下会发起options预检请求，简单请求包括get，post，head。
+浏览器在当前真实请求是**非简单请求且跨域**的情况下会发起options预检请求。
+
+简单请求：请求方法为get，post，head之一 且 Content-Type 的值为 text/plain、multipart/form-data、application/x-www-form-urlencoded之一。
 
 ### WebSocket
 WebSocket则提供使用一个TCP连接进行双向通讯的机制，一种在**单个TCP连接上进行全双工通信**的协议。WebSocket基于HTTP协议，借用了HTTP的协议来完成一部分握手，WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成**一次握手**，两者之间就直接可以创建**持久性的连接**，并进行**双向数据传输**。
